@@ -40,12 +40,13 @@
             padding-bottom: 10px;
             border-bottom: 1px solid #7f8c8d;
             display: flex; /* 使用 Flexbox 進行對齊 */
-            gap: 5px;
+            gap: 15px; /* 增加一點間距 */
         }
         
         .mission-icon {
             flex-shrink: 0; /* 防止 emoji 被壓縮 */
             font-size: 1.2em;
+            padding-top: 5px;
         }
 
         .mission-content {
@@ -535,6 +536,8 @@
     <div class="mission-brief">
         <div class="mission-icon">🕵️‍♂️</div>
         <div class="mission-content">
+            <img src="Beginning.png" style="width: 100%; max-width: 500px; display: block; margin-bottom: 10px; border-radius: 5px;" alt="任務開始">
+            
             <strong>任務代號：質數與合數解密</strong>
             <div class="mission-text">
                 特務你好！我們已成功潛入壞蛋的豪宅。據情報顯示，他把搶來的珠寶放在特製的 30 格密碼保險箱裡，並用一把鑰匙鎖上最外層的玻璃櫃。<br>
@@ -566,8 +569,7 @@
 <div class="game-container">
     <div class="cabinet-section">
         <div class="cabinet-grid" id="cabinetGrid">
-            <!-- JS will generate grid here -->
-        </div>
+            </div>
     </div>
 
     <div class="sidebar">
@@ -584,14 +586,12 @@
                 </div>
             </h2>
             <div class="morse-table" id="morseTable">
-                <!-- JS will generate table here -->
-            </div>
+                </div>
         </div>
 
         <div class="answer-section">
             <h2>解鎖面板</h2>
             <div class="unlock-grid">
-                <!-- Headers -->
                 <div class="unlock-header">層數</div>
                 <div class="unlock-header">字母</div>
                 <div class="unlock-header">數字</div>
@@ -601,31 +601,26 @@
                     </div>
                 </div>
 
-                <!-- Layer 1 -->
                 <div class="unlock-row-label">第一層</div>
                 <input type="text" class="unlock-input" id="input-word-0" placeholder="">
                 <input type="number" class="unlock-input" id="input-num-0" placeholder="輸入數字">
                 <div class="sidebar-interactive-board" id="sidebar-board-0"></div>
 
-                <!-- Layer 2 -->
                 <div class="unlock-row-label">第二層</div>
                 <input type="text" class="unlock-input" id="input-word-1" placeholder="">
                 <input type="number" class="unlock-input" id="input-num-1" placeholder="輸入數字">
                 <div class="sidebar-interactive-board" id="sidebar-board-1"></div>
 
-                <!-- Layer 3 -->
                 <div class="unlock-row-label">第三層</div>
                 <input type="text" class="unlock-input" id="input-word-2" placeholder="">
                 <input type="number" class="unlock-input" id="input-num-2" placeholder="輸入數字">
                 <div class="sidebar-interactive-board" id="sidebar-board-2"></div>
 
-                <!-- Layer 4 -->
                 <div class="unlock-row-label">第四層</div>
                 <input type="text" class="unlock-input" id="input-word-3" placeholder="">
                 <input type="number" class="unlock-input" id="input-num-3" placeholder="輸入數字">
                 <div class="sidebar-interactive-board" id="sidebar-board-3"></div>
 
-                <!-- Layer 5 -->
                 <div class="unlock-row-label">第五層</div>
                 <input type="text" class="unlock-input" id="input-word-4" placeholder="">
                 <input type="number" class="unlock-input" id="input-num-4" placeholder="輸入數字">
@@ -644,13 +639,11 @@
 
             <div class="final-answer">
                 <button class="submit-btn" onclick="checkAnswer()">開啟玻璃櫃</button>
-                <!-- Remove inline message, use modal instead -->
-            </div>
+                </div>
         </div>
     </div>
 </div>
 
-<!-- Modal Structure -->
 <div id="resultModal" class="modal">
     <div class="modal-content">
         <span class="close-btn" onclick="closeModal()">&times;</span>
@@ -1135,11 +1128,8 @@
         if (allCorrect) {
             playSuccessSound(); // Play unlock sound
             modalMessage.innerHTML = `
+                <img src="win.png" style="max-width: 200px; height: auto; margin-bottom: 15px;" alt="勝利">
                 <div class="modal-title success-style">🎉 任務成功！<br>玻璃櫃已開啟，請特務加快速度奪回珠寶！</div>
-                <img src="Gemini_Generated_Image_5l8w965l8w965l8w.jpg" 
-                     alt="任務成功：特務奪回珠寶" 
-                     style="max-width: 100%; height: auto; border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 4px solid #27ae60;"
-                     onerror="this.style.display='none'">
             `;
             // 禁用按鈕避免重複提交
             const btn = document.querySelector('.submit-btn');
@@ -1150,6 +1140,7 @@
         } else {
             playErrorSound(); // Play siren sound
             modalMessage.innerHTML = `
+                <img src="lose.png" style="max-width: 200px; height: auto; margin-bottom: 15px;" alt="失敗">
                 <div class="modal-title error-style">🚨 警報響起，任務失敗！守衛正在逼近！</div>
                 <div class="modal-text">錯誤位置：${errorMsg.join(", ")}</div>
             `;
