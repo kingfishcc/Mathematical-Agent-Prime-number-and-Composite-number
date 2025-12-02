@@ -57,19 +57,21 @@
             gap: 15px;
         }
         
-        .mission-icon {
-            flex-shrink: 0; /* 防止 emoji 被壓縮 */
-            font-size: 1.2em;
-            padding-top: 5px;
-        }
-
+        /* 這裡原本有一個 .mission-icon 的設定，因為我要把 icon 刪掉，所以這邊的 style 留著也沒關係，或者可以刪除 */
+        
         .mission-content {
             flex-grow: 1;
         }
 
         .mission-text {
-            margin-top: 5px; /* 與標題保持一點距離 */
+            margin-top: 10px; /* 增加一點上方距離 */
             display: block;
+            text-align: center; /* 設定文字置中 */
+        }
+        
+        /* 設定段落間距，讓文字不會黏在一起 */
+        .mission-text p {
+            margin: 8px 0; 
         }
         
         /* 操作指引列表樣式，確保換行對齊 */
@@ -554,9 +556,10 @@
             <strong style="display: block; text-align: center;">任務代號：質數與合數</strong>
             
             <div class="mission-text">
-                特務你好！我們已成功潛入壞蛋的豪宅。據情報顯示，他把搶來的珠寶放在特製的 30 格密碼保險箱裡，並用一把鑰匙鎖上最外層的玻璃櫃。<br>
-                桌上有編號 0～9 的 10 把鑰匙以及一張摩斯密碼表，請你根據操作指引找出正確編號的鑰匙。<br>
-                <span style="color: #e74c3c; font-weight: bold;">⚠️⚠️⚠️ 警告：如果解鎖失敗，將會觸發警報引來守衛，任務就會失敗，你也會被富翁抓住！祝你好運！⚠️⚠️⚠️</span>
+                <p>特務你好！我們已成功潛入壞蛋的豪宅。</p>
+                <p>據情報顯示，他把搶來的珠寶放在特製的 30 格密碼保險箱裡，並用一把鑰匙鎖上最外層的玻璃櫃。</p>
+                <p>桌上有編號 0～9 的 10 把鑰匙以及一張摩斯密碼表，請你根據操作指引找出正確編號的鑰匙。</p>
+                <p style="color: #e74c3c; font-weight: bold;">⚠️⚠️⚠️ 警告：如果解鎖失敗，將會觸發警報引來守衛，任務就會失敗，你也會被富翁抓住！祝你好運！⚠️⚠️⚠️</p>
             </div>
         </div>
     </div>
