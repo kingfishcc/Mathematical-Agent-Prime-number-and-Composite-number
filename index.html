@@ -639,7 +639,7 @@
 
             <div class="final-answer">
                 <button class="submit-btn" onclick="checkAnswer()">開啟玻璃櫃</button>
-                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -651,7 +651,56 @@
     </div>
 </div>
 
+<audio id="bgm" loop>
+    <source src="bgm.m4a" type="audio/mp4">
+</audio>
+
+<button id="musicBtn" onclick="toggleMusic()" style="
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 2000; 
+    background-color: #34495e; 
+    color: white; 
+    border: 2px solid #f1c40f; 
+    border-radius: 50px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-family: 'Microsoft JhengHei', sans-serif;
+    transition: all 0.3s;
+">
+    🔇 播放音樂
+</button>
+
 <script>
+    // Music Controls
+    const bgm = document.getElementById('bgm');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+
+    // 設定音量 (0.0 到 1.0，建議 0.3 不要太吵)
+    bgm.volume = 0.3;
+
+    function toggleMusic() {
+        if (isPlaying) {
+            bgm.pause();
+            musicBtn.innerHTML = "🔇 播放音樂";
+            musicBtn.style.backgroundColor = "#34495e"; // 暫停時變回深色
+        } else {
+            bgm.play().then(() => {
+                // 播放成功
+                musicBtn.innerHTML = "🔊 音樂開啟";
+                musicBtn.style.backgroundColor = "#27ae60"; // 播放時變成綠色
+            }).catch(error => {
+                console.log("播放失敗，可能是瀏覽器阻擋: " + error);
+            });
+        }
+        isPlaying = !isPlaying;
+    }
+
+    // Game Logic
     const morseCodeMap = {
         'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
         'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
@@ -1150,55 +1199,7 @@
     }
 
     initGame();
-    
-<audio id="bgm" loop>
-    <source src="bgm.m4a" type="audio/mp4">
-</audio>
-
-<button id="musicBtn" onclick="toggleMusic()" style="
-    position: fixed; 
-    bottom: 20px; 
-    right: 20px; 
-    z-index: 2000; 
-    background-color: #34495e; 
-    color: white; 
-    border: 2px solid #f1c40f; 
-    border-radius: 50px; 
-    padding: 10px 20px; 
-    font-size: 16px; 
-    cursor: pointer; 
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-    font-family: 'Microsoft JhengHei', sans-serif;
-    transition: all 0.3s;
-">
-    🔇 播放音樂
-</button>
-
-<script>
-    const bgm = document.getElementById('bgm');
-    const musicBtn = document.getElementById('musicBtn');
-    let isPlaying = false;
-
-    // 設定音量 (0.0 到 1.0，建議 0.3 不要太吵)
-    bgm.volume = 0.3;
-
-    function toggleMusic() {
-        if (isPlaying) {
-            bgm.pause();
-            musicBtn.innerHTML = "🔇 播放音樂";
-            musicBtn.style.backgroundColor = "#34495e"; // 暫停時變回深色
-        } else {
-            bgm.play().then(() => {
-                // 播放成功
-                musicBtn.innerHTML = "🔊 音樂開啟";
-                musicBtn.style.backgroundColor = "#27ae60"; // 播放時變成綠色
-            }).catch(error => {
-                console.log("播放失敗，可能是瀏覽器阻擋: " + error);
-            });
-        }
-        isPlaying = !isPlaying;
-    }
 </script>
-    
+
 </body>
 </html>
