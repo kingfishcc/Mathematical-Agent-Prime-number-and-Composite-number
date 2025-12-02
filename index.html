@@ -11,24 +11,23 @@
 
     <style>
         body {
-            /* 2. 套用新字體：優先使用 Fredoka，中文自動退回到 Noto Sans TC */
+            /* 套用新字體：優先使用 Fredoka，中文自動退回到 Noto Sans TC */
             font-family: 'Fredoka', 'Noto Sans TC', sans-serif;
-            
-            background-color: #2c3e50; /* 改為深色背景，更有特務氛圍 */
+            background-color: #2c3e50; 
             display: flex;
             flex-direction: column;
             align-items: center;
             padding: 20px;
             margin: 0;
-            color: #ecf0f1; /* 文字改為淺色 */
+            color: #ecf0f1;
         }
 
         h1 {
-            color: #f1c40f; /* 金黃色標題 */
+            color: #f1c40f; 
             margin-bottom: 10px;
             text-align: center;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            font-weight: 700; /* 標題加粗 */
+            font-weight: 700; 
             letter-spacing: 1px;
         }
 
@@ -38,10 +37,10 @@
         }
 
         .game-info {
-            background-color: #34495e; /* 深藍灰色背景 */
+            background-color: #34495e; 
             padding: 20px;
             border-radius: 8px;
-            border-left: 5px solid #e74c3c; /* 紅色邊框示警 */
+            border-left: 5px solid #e74c3c; 
             margin-bottom: 20px;
             max-width: 900px;
             line-height: 1.6;
@@ -53,12 +52,12 @@
             margin-bottom: 15px;
             padding-bottom: 10px;
             border-bottom: 1px solid #7f8c8d;
-            display: flex; /* 使用 Flexbox 進行對齊 */
+            display: flex; 
             gap: 15px;
         }
         
         .mission-icon {
-            flex-shrink: 0; /* 防止 emoji 被壓縮 */
+            flex-shrink: 0; 
             font-size: 1.2em;
             padding-top: 5px;
         }
@@ -68,15 +67,14 @@
         }
 
         .mission-text {
-            margin-top: 5px; /* 與標題保持一點距離 */
+            margin-top: 5px; 
             display: block;
         }
         
-        /* 操作指引列表樣式，確保換行對齊 */
         .instruction-list {
             margin-top: 5px;
             margin-bottom: 0;
-            padding-left: 24px; /* 數字縮排空間 */
+            padding-left: 24px; 
         }
         .instruction-list li {
             margin-bottom: 8px;
@@ -85,14 +83,14 @@
         .legend {
             margin-top: 10px;
             display: flex;
-            gap: 30px; /* 增加間距讓兩組分開一點 */
+            gap: 30px; 
             font-weight: bold;
             background: #ecf0f1;
             padding: 10px;
             border-radius: 5px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
             color: #2c3e50;
-            justify-content: center; /* 居中圖例 */
+            justify-content: center; 
         }
         
         .legend-item {
@@ -115,7 +113,7 @@
         .cabinet-section {
             flex: 1.5;
             min-width: 340px;
-            background-color: #95a5a6; /* 鐵灰色櫃子 */
+            background-color: #95a5a6; 
             padding: 15px;
             border-radius: 15px;
             box-shadow: inset 0 0 30px rgba(0,0,0,0.5), 5px 5px 20px rgba(0,0,0,0.4);
@@ -173,7 +171,7 @@
             border-radius: 4px;
             text-align: center;
             font-size: 16px;
-            font-weight: bold; /* 讓字體更明顯 */
+            font-weight: bold; 
             text-transform: uppercase;
             color: #2c3e50;
             outline: none;
@@ -220,10 +218,8 @@
             gap: 3px;
             flex-wrap: wrap;
             justify-content: center;
-            /* 取消固定的 max-width，讓 3 顆球可以一排 */
         }
 
-        /* 只有當需要強制 2x2 排列時才加上此 Class (4顆球時) */
         .balls-container.wrap-grid {
             max-width: 55px; 
         }
@@ -258,7 +254,7 @@
         }
 
         .morse-chart, .answer-section {
-            background-color: #ecf0f1; /* 淺灰色面板 */
+            background-color: #ecf0f1; 
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 15px rgba(0,0,0,0.3);
@@ -295,3 +291,919 @@
 
         .morse-item {
             display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+            padding: 5px 12px;
+            border-radius: 4px;
+            border: 1px solid #bdc3c7;
+        }
+        
+        .morse-separator {
+            grid-column: 1 / -1;
+            height: 2px;
+            background-color: #3498db;
+            margin: 10px 0;
+            position: relative;
+        }
+        .morse-separator::after {
+            content: "鑰匙編號區";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #ecf0f1;
+            padding: 0 10px;
+            color: #3498db;
+            font-weight: bold;
+            font-size: 12px;
+        }
+
+        .unlock-grid {
+            display: grid;
+            grid-template-columns: 60px 1fr 80px 1.5fr; 
+            gap: 10px;
+            align-items: center;
+        }
+
+        .unlock-header {
+            font-weight: bold;
+            text-align: center;
+            background-color: #bdc3c7;
+            padding: 8px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            color: #2c3e50;
+        }
+
+        .unlock-row-label {
+            font-weight: bold;
+            text-align: center;
+            color: #2c3e50;
+        }
+
+        input[type=number]::-webkit-outer-spin-button,
+        input[type=number]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .unlock-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #95a5a6;
+            border-radius: 5px;
+            font-size: 1rem;
+            text-align: center;
+            box-sizing: border-box;
+            background-color: #fff;
+            color: #2c3e50;
+        }
+        .unlock-input:focus {
+            border-color: #e67e22;
+            outline: none;
+            box-shadow: 0 0 5px rgba(230, 126, 34, 0.5);
+        }
+        .unlock-input::placeholder {
+            font-size: 0.8rem;
+            color: #95a5a6;
+        }
+
+        .sidebar-interactive-board {
+            background-color: #34495e;
+            border-radius: 5px;
+            padding: 8px;
+            min-height: 34px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px; 
+            justify-content: center;
+            align-items: center;
+            box-shadow: inset 0 0 5px rgba(0,0,0,0.5);
+        }
+        
+        .morse-visual { display: flex; gap: 2px; align-items: center; }
+        .table-dot { width: 6px; height: 6px; background-color: #3498db; border-radius: 50%; }
+        .table-dash { width: 14px; height: 6px; background-color: #e74c3c; border-radius: 3px; }
+
+        .final-challenge {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #fcf3cf;
+            border: 2px solid #f1c40f;
+            border-radius: 8px;
+            text-align: center;
+            color: #7f8c8d;
+        }
+        .final-challenge h3 {
+            margin-top: 0;
+            color: #d35400;
+            font-size: 1.1rem;
+        }
+        .final-challenge p {
+            margin: 10px 0;
+            font-size: 0.95rem;
+            color: #2c3e50;
+            line-height: 1.5;
+        }
+        .final-key-input {
+            font-size: 1.5rem;
+            padding: 10px;
+            width: 100px;
+            text-align: center;
+            border: 3px solid #d35400;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #d35400;
+        }
+
+        .final-answer {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 15px;
+            font-size: 20px;
+            background-color: #27ae60;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            box-shadow: 0 4px 0 #219150;
+            transition: transform 0.1s, box-shadow 0.1s;
+        }
+        .submit-btn:hover { 
+            background-color: #2ecc71; 
+        }
+        .submit-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 0 0 #219150;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.7);
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+            width: 85%;
+            max-width: 600px;
+            text-align: center;
+            position: relative;
+            animation: slideDown 0.4s ease-out;
+            color: #333;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-50px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        .close-btn {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            transition: color 0.2s;
+        }
+
+        .close-btn:hover,
+        .close-btn:focus {
+            color: #e74c3c;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .modal-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+        .modal-text {
+            font-size: 1.1rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .success-style { color: #27ae60; }
+        .error-style { color: #c0392b; }
+
+        @media (max-width: 900px) {
+            .game-container { flexDirection: column; align-items: center; }
+            .sidebar { width: 100%; min-width: auto; }
+            .cabinet-section { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+<h1>數學特務：摩斯密碼</h1>
+
+<div class="game-info">
+    <div class="mission-brief">
+        <div class="mission-icon">🕵️‍♂️</div>
+        <div class="mission-content">
+            <img src="Beginning.png" style="width: 100%; max-width: 500px; display: block; margin: 0 auto 10px auto; border-radius: 5px;" alt="任務開始">
+            
+            <strong>任務代號：質數與合數</strong>
+            <div class="mission-text">
+                特務你好！我們已成功潛入壞蛋的豪宅。據情報顯示，他把搶來的珠寶放在特製的 30 格密碼保險箱裡，並用一把鑰匙鎖上最外層的玻璃櫃。<br>
+                桌上有編號 0～9 的 10 把鑰匙以及一張摩斯密碼表，請你根據操作指引找出正確編號的鑰匙。<br>
+                <span style="color: #e74c3c; font-weight: bold;">⚠️⚠️⚠️ 警告：如果解鎖失敗，將會觸發警報引來守衛，任務就會失敗，你也會被富翁抓住！祝你好運！⚠️⚠️⚠️</span>
+            </div>
+        </div>
+    </div>
+    
+    <strong>操作指引：</strong>
+    <ol class="instruction-list">
+        <li>先判斷左側保險櫃上黃球內的數字是質數或是合數，點擊黃球來記錄符號（質 <div class="morse-dash" style="width: 14px; height: 6px; display: inline-block; vertical-align: middle; margin: 0 1px; box-shadow:none; cursor: default;"></div>／合 <div class="morse-dot" style="width: 8px; height: 8px; display: inline-block; vertical-align: middle; margin: 0 1px; box-shadow:none; cursor: default;"></div>）。</li>
+        <li>對照摩斯密碼表，在保險櫃上的白色面板中輸入對應的英文字母。若字母顯示<span style="color: #e74c3c; font-weight: bold;">紅色</span>，表示你的數字判斷錯誤或是字母轉換錯誤。</li>
+        <li>在解鎖面板上將字母拼出的單字轉換成數字並輸入，再次判斷這五個數字的質／合數，找出正確鑰匙！</li>
+    </ol>
+    
+    <div class="legend">
+        <div class="legend-item">
+            <span>質數 (Prime)</span>
+            <div class="morse-dash"></div>
+        </div>
+        <div class="legend-item">
+            <span>合數 (Composite)</span>
+            <div class="morse-dot"></div>
+        </div>
+    </div>
+</div>
+
+<div class="game-container">
+    <div class="cabinet-section">
+        <div class="cabinet-grid" id="cabinetGrid">
+            </div>
+    </div>
+
+    <div class="sidebar">
+        <div class="morse-chart">
+            <h2>
+                摩斯密碼表
+                <div style="font-size: 0.8rem; display: flex; align-items: center; gap: 8px; font-weight: normal;">
+                    <div style="display: flex; align-items: center; gap: 2px;">
+                        質<div class="morse-dash" style="width: 14px; height: 6px; display: inline-block; margin: 0; box-shadow:none; cursor: default;"></div>
+                    </div>
+                    <div style="display: flex; align-items: center; gap: 2px;">
+                        合<div class="morse-dot" style="width: 8px; height: 8px; display: inline-block; margin: 0; box-shadow:none; cursor: default;"></div>
+                    </div>
+                </div>
+            </h2>
+            <div class="morse-table" id="morseTable">
+                </div>
+        </div>
+
+        <div class="answer-section">
+            <h2>解鎖面板</h2>
+            <div class="unlock-grid">
+                <div class="unlock-header">層數</div>
+                <div class="unlock-header">字母</div>
+                <div class="unlock-header">數字</div>
+                <div class="unlock-header">
+                    <div style="display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 1px;">
+                        判斷質 <div class="morse-dash" style="width: 14px; height: 6px; display: inline-block; vertical-align: middle; margin: 0 1px; box-shadow:none; cursor: default;"></div> ／合數 <div class="morse-dot" style="width: 8px; height: 8px; display: inline-block; vertical-align: middle; margin: 0 1px; box-shadow:none; cursor: default;"></div>
+                    </div>
+                </div>
+
+                <div class="unlock-row-label">第一層</div>
+                <input type="text" class="unlock-input" id="input-word-0" placeholder="">
+                <input type="number" class="unlock-input" id="input-num-0" placeholder="輸入數字">
+                <div class="sidebar-interactive-board" id="sidebar-board-0"></div>
+
+                <div class="unlock-row-label">第二層</div>
+                <input type="text" class="unlock-input" id="input-word-1" placeholder="">
+                <input type="number" class="unlock-input" id="input-num-1" placeholder="輸入數字">
+                <div class="sidebar-interactive-board" id="sidebar-board-1"></div>
+
+                <div class="unlock-row-label">第三層</div>
+                <input type="text" class="unlock-input" id="input-word-2" placeholder="">
+                <input type="number" class="unlock-input" id="input-num-2" placeholder="輸入數字">
+                <div class="sidebar-interactive-board" id="sidebar-board-2"></div>
+
+                <div class="unlock-row-label">第四層</div>
+                <input type="text" class="unlock-input" id="input-word-3" placeholder="">
+                <input type="number" class="unlock-input" id="input-num-3" placeholder="輸入數字">
+                <div class="sidebar-interactive-board" id="sidebar-board-3"></div>
+
+                <div class="unlock-row-label">第五層</div>
+                <input type="text" class="unlock-input" id="input-word-4" placeholder="">
+                <input type="number" class="unlock-input" id="input-num-4" placeholder="輸入數字">
+                <div class="sidebar-interactive-board" id="sidebar-board-4"></div>
+            </div>
+
+            <div class="final-challenge">
+                <h3>🔑</h3>
+                <p>
+                    判斷上方五個「答案數字」的質／合數後，<br>
+                    將這五個符號組成新的一組摩斯密碼，<br>
+                    查摩斯密碼表找出對應的正確鑰匙編號。
+                </p>
+                <input type="number" class="final-key-input" id="final-key-input" placeholder="?">
+            </div>
+
+            <div class="final-answer">
+                <button class="submit-btn" onclick="checkAnswer()">開啟玻璃櫃</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="resultModal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <div id="modalMessage"></div>
+    </div>
+</div>
+
+<audio id="bgm" loop>
+    <source src="bgm.m4a" type="audio/mp4">
+</audio>
+
+<button id="musicBtn" onclick="toggleMusic()" style="
+    position: fixed; 
+    bottom: 20px; 
+    right: 20px; 
+    z-index: 2000; 
+    background-color: #34495e; 
+    color: white; 
+    border: 2px solid #f1c40f; 
+    border-radius: 50px; 
+    padding: 10px 20px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    font-family: 'Fredoka', 'Noto Sans TC', sans-serif; /* 按鈕也套用可愛字體 */
+    transition: all 0.3s;
+">
+    🔇 播放音樂
+</button>
+
+<script>
+    // Music Controls
+    const bgm = document.getElementById('bgm');
+    const musicBtn = document.getElementById('musicBtn');
+    let isPlaying = false;
+
+    // 設定音量 (0.0 到 1.0，建議 0.3 不要太吵)
+    bgm.volume = 0.3;
+
+    function toggleMusic() {
+        if (isPlaying) {
+            bgm.pause();
+            musicBtn.innerHTML = "🔇 播放音樂";
+            musicBtn.style.backgroundColor = "#34495e"; // 暫停時變回深色
+        } else {
+            bgm.play().then(() => {
+                // 播放成功
+                musicBtn.innerHTML = "🔊 音樂開啟";
+                musicBtn.style.backgroundColor = "#27ae60"; // 播放時變成綠色
+            }).catch(error => {
+                console.log("播放失敗，可能是瀏覽器阻擋: " + error);
+            });
+        }
+        isPlaying = !isPlaying;
+    }
+
+    // Game Logic
+    const morseCodeMap = {
+        'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+        'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+        'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+        'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+        'Y': '-.--', 'Z': '--..',
+        '0': '-----', '1': '.----', '2': '..---', '3': '...--', '4': '....-',
+        '5': '.....', '6': '-....', '7': '--...', '8': '---..', '9': '----.'
+    };
+
+    const symbolToLetterMap = Object.fromEntries(Object.entries(morseCodeMap).map(a => a.reverse()));
+
+    const cabinetDataRaw = [
+        { balls: [27, 16, 43, 8] },      // F
+        { balls: [97, 13, 47] },         // O
+        { balls: [34, 29, 51] },         // R
+        { balls: [53] },                 // T
+        { balls: [31, 28, 2, 19] },      // Y
+        { balls: [], type: 'safe' },     
+
+        { balls: [21] },                 // E
+        { balls: [96, 69] },             // I
+        { balls: [71, 37, 99] },         // G
+        { balls: [81, 14, 64, 77] },     // H
+        { balls: [59] },                 // T
+        { balls: [73, 39, 5, 41] },      // Y
+
+        { balls: [57] },                 // E
+        { balls: [24, 23, 40, 52] },     // L
+        { balls: [91] },                 // E
+        { balls: [38, 44, 25, 17] },     // V
+        { balls: [10] },                 // E
+        { balls: [89, 46] },             // N
+
+        { balls: [83] },                 // T
+        { balls: [26, 33, 18, 6] },      // H
+        { balls: [75, 61, 9] },          // R
+        { balls: [95] },                 // E
+        { balls: [87] },                 // E
+        { balls: [], type: 'safe' },     
+
+        { balls: [65, 56, 35] },         // S
+        { balls: [49] },                 // E
+        { balls: [55, 42, 15, 79] },     // V
+        { balls: [72] },                 // E
+        { balls: [67, 93] },             // N
+        { balls: [], type: 'safe' },     
+    ];
+
+    const correctAnswers = [40, 80, 11, 3, 7];
+    const correctFinalKey = 2;
+
+    // State tracking
+    const ballStates = {}; // Left cabinet states
+    const sidebarStates = {}; // Right sidebar states (independent)
+
+    function initGame() {
+        createCabinetGrid();
+        createMorseTable();
+        initSidebarInteractiveBoards();
+    }
+
+    function isPrime(num) {
+        if (num <= 1) return false;
+        for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+        }
+        return true;
+    }
+
+    function getSymbol(num) {
+        return isPrime(num) ? '-' : '.';
+    }
+
+    function playClickSound() {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        
+        osc.type = 'sine'; // Sine is clean, good for 'crisp' high ticks
+        osc.frequency.setValueAtTime(2200, ctx.currentTime); // Higher pitch
+        
+        // Sharp envelope
+        gain.gain.setValueAtTime(0.8, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.1); // Fast decay
+        
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.1);
+    }
+
+    function createCabinetGrid() {
+        const grid = document.getElementById('cabinetGrid');
+        
+        cabinetDataRaw.forEach((data, index) => {
+            const cell = document.createElement('div');
+            
+            if (data.type === 'safe') {
+                cell.className = 'cell decoration';
+                cell.innerHTML = `<svg class="decoration-icon" viewBox="0 0 100 100" fill="none" stroke="#34495e" stroke-width="4">
+                    <rect x="15" y="15" width="70" height="70" rx="5" fill="#ecf0f1"/>
+                    <circle cx="50" cy="50" r="12" fill="#bdc3c7" stroke="#7f8c8d"/>
+                    <circle cx="65" cy="50" r="2" fill="#2c3e50"/>
+                    <path d="M50 38 L50 30" stroke="#7f8c8d"/>
+                </svg>`;
+            } else if (data.type === 'empty' && data.balls.length === 0) {
+                cell.className = 'cell empty';
+            } else {
+                cell.className = 'cell';
+
+                // Calculate correct letter for this cell
+                const morseStr = data.balls.map(num => getSymbol(num)).join('');
+                const correctLetter = symbolToLetterMap[morseStr] || "";
+
+                // Letter Input
+                const input = document.createElement('input');
+                input.className = 'letter-board';
+                input.maxLength = 1;
+                input.dataset.correct = correctLetter; // Store correct answer
+                
+                // Validation and Sync
+                input.addEventListener('input', function() {
+                    // Validation logic
+                    const val = this.value.toUpperCase();
+                    if (val && val !== this.dataset.correct) {
+                        this.style.color = '#e74c3c'; // Red color for incorrect
+                    } else {
+                        this.style.color = '#2c3e50'; // Default color
+                    }
+                    // Sync
+                    syncLetters(index);
+                });
+
+                cell.appendChild(input);
+
+                // Symbol Board
+                const symbolBoard = document.createElement('div');
+                symbolBoard.className = 'symbol-board';
+                
+                const ballsContainer = document.createElement('div');
+                ballsContainer.className = 'balls-container';
+                
+                // Special layout for 4 balls: 2x2 grid
+                if (data.balls.length === 4) {
+                    ballsContainer.classList.add('wrap-grid');
+                }
+
+                data.balls.forEach((num, ballIndex) => {
+                    const symbolPlaceholder = document.createElement('div');
+                    symbolPlaceholder.className = 'symbol-placeholder';
+                    symbolPlaceholder.id = `symbol-${index}-${ballIndex}`;
+                    symbolPlaceholder.onclick = () => toggleLeftSymbol(index, ballIndex, symbolPlaceholder);
+                    symbolBoard.appendChild(symbolPlaceholder);
+
+                    const ball = document.createElement('div');
+                    ball.className = 'ball';
+                    ball.textContent = num;
+                    ball.onclick = () => {
+                        toggleLeftSymbol(index, ballIndex, symbolPlaceholder);
+                    };
+                    ballsContainer.appendChild(ball);
+                });
+
+                cell.appendChild(symbolBoard);
+                cell.appendChild(ballsContainer);
+            }
+            grid.appendChild(cell);
+        });
+    }
+
+    // Sync Logic: Aggregates letters from left inputs to right input
+    function syncLetters(changedCellIndex) {
+        const layerIndex = Math.floor(changedCellIndex / 6);
+        const startCell = layerIndex * 6;
+        const endCell = startCell + 6;
+        
+        let word = "";
+        const inputs = document.querySelectorAll('.letter-board');
+        
+        let inputCounter = 0;
+        const dataToInputMap = {}; // Maps data index to input element index
+        
+        cabinetDataRaw.forEach((d, idx) => {
+            if (!d.type && d.balls.length > 0) {
+                dataToInputMap[idx] = inputCounter++;
+            }
+        });
+
+        for (let i = startCell; i < endCell; i++) {
+            if (dataToInputMap.hasOwnProperty(i)) {
+                const inputIdx = dataToInputMap[i];
+                if (inputs[inputIdx]) {
+                    word += inputs[inputIdx].value.toUpperCase();
+                }
+            }
+        }
+        
+        document.getElementById(`input-word-${layerIndex}`).value = word;
+    }
+
+    // Initialize Right Sidebar Interactive Boards
+    function initSidebarInteractiveBoards() {
+        for (let layer = 0; layer < 5; layer++) {
+            const board = document.getElementById(`sidebar-board-${layer}`);
+            
+            // Always 1 button per layer
+            const buttonCount = 1;
+            
+            for (let i = 0; i < buttonCount; i++) {
+                const uniqueId = `sidebar-${layer}-${i}`;
+                const placeholder = document.createElement('div');
+                placeholder.className = 'symbol-placeholder';
+                placeholder.onclick = () => toggleRightSymbol(uniqueId, placeholder);
+                board.appendChild(placeholder);
+            }
+        }
+    }
+
+    function toggleLeftSymbol(cellIndex, ballIndex, element) {
+        playClickSound(); // Add sound
+        const key = `${cellIndex}-${ballIndex}`;
+        let current = ballStates[key];
+
+        if (current === 'dot') {
+            ballStates[key] = 'dash';
+            element.className = 'morse-dash';
+            element.style.backgroundColor = ''; 
+            element.title = "質數 (Prime)";
+        } else if (current === 'dash') {
+            ballStates[key] = null;
+            element.className = 'symbol-placeholder';
+            element.style.backgroundColor = '#95a5a6';
+            element.title = "";
+        } else {
+            ballStates[key] = 'dot';
+            element.className = 'morse-dot';
+            element.style.backgroundColor = '';
+            element.title = "合數 (Composite)";
+        }
+    }
+
+    function toggleRightSymbol(id, element) {
+        playClickSound(); // Add sound
+        let current = sidebarStates[id];
+
+        if (current === 'dot') {
+            sidebarStates[id] = 'dash';
+            element.className = 'morse-dash';
+            element.style.backgroundColor = ''; 
+        } else if (current === 'dash') {
+            sidebarStates[id] = null;
+            element.className = 'symbol-placeholder';
+            element.style.backgroundColor = '#95a5a6';
+        } else {
+            sidebarStates[id] = 'dot';
+            element.className = 'morse-dot';
+            element.style.backgroundColor = '';
+        }
+    }
+
+    function createMorseTable() {
+        const table = document.getElementById('morseTable');
+        
+        const sortedKeys = Object.keys(morseCodeMap).sort((a, b) => {
+            const isNumA = /^\d$/.test(a);
+            const isNumB = /^\d$/.test(b);
+            if (isNumA && !isNumB) return 1;
+            if (!isNumA && isNumB) return -1;
+            return a.localeCompare(b);
+        });
+
+        let addedSeparator = false;
+
+        sortedKeys.forEach(key => {
+            if (/^\d$/.test(key) && !addedSeparator) {
+                const separator = document.createElement('div');
+                separator.className = 'morse-separator';
+                table.appendChild(separator);
+                addedSeparator = true;
+            }
+
+            const val = morseCodeMap[key];
+            const item = document.createElement('div');
+            item.className = 'morse-item';
+            
+            let visualHtml = '<div class="morse-visual">';
+            for (let char of val) {
+                if (char === '.') {
+                    visualHtml += '<div class="table-dot"></div>';
+                } else {
+                    visualHtml += '<div class="table-dash"></div>';
+                }
+            }
+            visualHtml += '</div>';
+
+            item.innerHTML = `<span>${key}</span>${visualHtml}`;
+            table.appendChild(item);
+        });
+    }
+
+    // Modal Control Functions
+    function closeModal() {
+        document.getElementById('resultModal').style.display = 'none';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+        const modal = document.getElementById('resultModal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+    // Sound Effects using Web Audio API
+    function playSuccessSound() {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        const now = ctx.currentTime;
+
+        // create white noise buffer for paper texture
+        const bufferSize = ctx.sampleRate * 2; // 2 seconds buffer
+        const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+        const data = buffer.getChannelData(0);
+        for (let i = 0; i < bufferSize; i++) {
+            data[i] = Math.random() * 2 - 1;
+        }
+
+        // Function to simulate one bill flip (swish sound)
+        function playBillFlip(time) {
+            const source = ctx.createBufferSource();
+            source.buffer = buffer;
+
+            // Filter: Lower frequency for a "thicker/lower" paper sound
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.value = 600 + Math.random() * 400; // Lowered from 1200+
+            filter.Q.value = 1.0; // Slightly sharper resonance
+
+            const gain = ctx.createGain();
+            // Envelope: Sharp attack, fast decay
+            gain.gain.setValueAtTime(0, time);
+            gain.gain.linearRampToValueAtTime(1.0, time + 0.005); // Faster attack
+            gain.gain.exponentialRampToValueAtTime(0.01, time + 0.06); // Faster decay
+
+            source.connect(filter);
+            filter.connect(gain);
+            gain.connect(ctx.destination);
+
+            source.start(time);
+            source.stop(time + 0.1);
+        }
+
+        // Play a sequence: Faster speed
+        const billCount = 15; // More bills
+        const speed = 0.05; // Faster interval (was 0.09)
+        
+        for (let i = 0; i < billCount; i++) {
+            playBillFlip(now + i * speed + Math.random() * 0.01);
+        }
+
+        // "Ca-ching!" - Crisper, higher pitch
+        const endTime = now + billCount * speed + 0.1;
+        
+        // 1. Main Ding (Triangle wave for metallic crispness)
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        
+        osc.type = 'triangle'; 
+        osc.frequency.setValueAtTime(3500, endTime); // Higher start pitch
+        osc.frequency.exponentialRampToValueAtTime(3500, endTime + 0.5); // Steady pitch for clarity
+        
+        gain.gain.setValueAtTime(0, endTime);
+        gain.gain.linearRampToValueAtTime(0.5, endTime + 0.01); // Sharp attack
+        gain.gain.exponentialRampToValueAtTime(0.001, endTime + 1.5); // Long ringing tail
+        
+        osc.start(endTime);
+        osc.stop(endTime + 1.5);
+
+        // 2. Sparkle overlay (High Sine)
+        const osc2 = ctx.createOscillator();
+        const gain2 = ctx.createGain();
+        osc2.connect(gain2);
+        gain2.connect(ctx.destination);
+        
+        osc2.type = 'sine';
+        osc2.frequency.setValueAtTime(5000, endTime);
+        
+        gain2.gain.setValueAtTime(0, endTime);
+        gain2.gain.linearRampToValueAtTime(0.2, endTime + 0.01);
+        gain2.gain.exponentialRampToValueAtTime(0.001, endTime + 0.3); // Short sparkle
+        
+        osc2.start(endTime);
+        osc2.stop(endTime + 0.3);
+    }
+
+    function playErrorSound() {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        
+        osc.type = 'sawtooth'; 
+        
+        const now = ctx.currentTime;
+        const duration = 3.0; // 3 seconds
+
+        // Siren wail: Low frequency 150-400Hz
+        osc.frequency.setValueAtTime(150, now);
+        osc.frequency.linearRampToValueAtTime(400, now + 0.5);
+        osc.frequency.linearRampToValueAtTime(150, now + 1.0);
+        osc.frequency.linearRampToValueAtTime(400, now + 1.5);
+        osc.frequency.linearRampToValueAtTime(150, now + 2.0);
+        osc.frequency.linearRampToValueAtTime(400, now + 2.5);
+        osc.frequency.linearRampToValueAtTime(150, now + 3.0);
+
+        // Volume envelope
+        gain.gain.setValueAtTime(0.2, now);
+        gain.gain.setValueAtTime(0.2, now + duration - 0.5);
+        gain.gain.linearRampToValueAtTime(0, now + duration);
+        
+        osc.start(now);
+        osc.stop(now + duration);
+    }
+
+    function checkAnswer() {
+        let allCorrect = true;
+        let errorMsg = [];
+        const modalMessage = document.getElementById('modalMessage');
+        const modal = document.getElementById('resultModal');
+
+        // Check 5 layers
+        for (let i = 0; i < 5; i++) {
+            const numInput = document.getElementById(`input-num-${i}`);
+            const val = parseInt(numInput.value);
+            
+            if (isNaN(val) || val !== correctAnswers[i]) {
+                allCorrect = false;
+                errorMsg.push(`第 ${i+1} 層`);
+                numInput.style.borderColor = '#e74c3c';
+                numInput.style.backgroundColor = '#fadbd8';
+            } else {
+                numInput.style.borderColor = '#27ae60';
+                numInput.style.backgroundColor = '#d5f5e3';
+            }
+        }
+
+        // Check final key
+        const finalKeyInput = document.getElementById('final-key-input');
+        const finalKeyVal = parseInt(finalKeyInput.value);
+        
+        if (isNaN(finalKeyVal) || finalKeyVal !== correctFinalKey) {
+             allCorrect = false;
+             errorMsg.push("正確鑰匙編號");
+             finalKeyInput.style.borderColor = '#e74c3c';
+             finalKeyInput.style.backgroundColor = '#fadbd8';
+        } else {
+             finalKeyInput.style.borderColor = '#27ae60';
+             finalKeyInput.style.backgroundColor = '#d5f5e3';
+        }
+
+        if (allCorrect) {
+            playSuccessSound(); // Play unlock sound
+            modalMessage.innerHTML = `
+                <img src="win.png" style="max-width: 200px; height: auto; margin-bottom: 15px;" alt="勝利">
+                <div class="modal-title success-style">🎉 任務成功！<br>玻璃櫃已開啟，請特務加快速度奪回珠寶！</div>
+            `;
+            // 禁用按鈕避免重複提交
+            const btn = document.querySelector('.submit-btn');
+            btn.disabled = true;
+            btn.style.backgroundColor = '#95a5a6';
+            btn.style.cursor = 'default';
+            btn.innerText = "任務已完成";
+        } else {
+            playErrorSound(); // Play siren sound
+            modalMessage.innerHTML = `
+                <img src="lose.png" style="max-width: 200px; height: auto; margin-bottom: 15px;" alt="失敗">
+                <div class="modal-title error-style">🚨 警報響起，任務失敗！守衛正在逼近！</div>
+                <div class="modal-text">錯誤位置：${errorMsg.join(", ")}</div>
+            `;
+        }
+        
+        modal.style.display = 'flex';
+    }
+
+    initGame();
+</script>
+
+</body>
+</html>
