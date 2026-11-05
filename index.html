@@ -4,20 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>數學特務：摩斯密碼</title>
-    <!-- 引入圓體字型（Zen Maru Gothic / M PLUS Rounded 1c 呈現源泉圓體風格） -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- 引入正統源泉圓體 (GenSenRounded2 TC) -->
+    <link rel="stylesheet" href="https://fontsapi.zeoseven.com/303/main/result.css">
     <style>
         :root {
-            /* 定義主字型變數，將圓體設為首選字型 */
-            --main-font: 'Zen Maru Gothic', 'M PLUS Rounded 1c', 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+            /* 定義主字型變數，將源泉圓體設為首選字型 */
+            --main-font: 'GenSenRounded2 TC', 'Zen Maru Gothic', 'M PLUS Rounded 1c', 'Microsoft JhengHei', sans-serif;
         }
 
-        /* 確保全域（包含按鈕、輸入框、彈窗）都強制套用圓體 */
-        *, body, button, input, select, textarea {
-            font-family: var(--main-font);
+        /* 確保全域（包含按鈕、輸入框、彈窗、所有中文字）都強制套用源泉圓體 */
+        *, body, button, input, select, textarea, h1, h2, h3, p, span, div, label {
+            font-family: var(--main-font) !important;
         }
+
 
         body {
             background-color: #2c3e50; /* 改為深色背景，更有特務氛圍 */
