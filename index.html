@@ -4,16 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>數學特務：摩斯密碼</title>
-    
+    <!-- 引入圓體字型（Zen Maru Gothic / M PLUS Rounded 1c 呈現源泉圓體風格） -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
-
+    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            /* 定義主字型變數，將圓體設為首選字型 */
+            --main-font: 'Zen Maru Gothic', 'M PLUS Rounded 1c', 'Microsoft JhengHei', 'Segoe UI', Arial, sans-serif;
+        }
+
+        /* 確保全域（包含按鈕、輸入框、彈窗）都強制套用圓體 */
+        *, body, button, input, select, textarea {
+            font-family: var(--main-font);
+        }
+
         body {
-            /* 2. 套用新字體：優先使用 Fredoka，中文自動退回到 Noto Sans TC */
-            font-family: 'Fredoka', 'Noto Sans TC', sans-serif;
-            
             background-color: #2c3e50; /* 改為深色背景，更有特務氛圍 */
             display: flex;
             flex-direction: column;
@@ -665,17 +671,17 @@
     </div>
 </div>
 
-<!-- Footer Copyright Section -->
-<footer style="margin-top: 30px; padding: 15px 20px; background-color: #34495e; border-radius: 8px; text-align: center; max-width: 900px; width: 100%; box-shadow: 0 4px 10px rgba(0,0,0,0.3); border-top: 3px solid #f1c40f;">
-    <div class="space-y-1 text-slate-300" style="color: #cbd5e1; font-size: 13px; line-height: 1.5;">
+<!-- Embedded Footer Copyright Section -->
+<footer style="margin-top: 40px; margin-bottom: 20px; text-align: center; max-width: 900px; width: 100%;">
+    <div class="space-y-1 text-slate-400" style="color: #94a3b8; font-size: 12px; line-height: 1.6;">
         <p class="font-medium text-[12px]" style="margin: 4px 0;">改編自康軒版數學課本 B1 數學好好玩：摩斯密碼解鎖；製作：金魚老師</p>
         <p class="font-medium text-[12px]" style="margin: 4px 0;">
             初版連結：
-            <a href="http://math.tainan.com.tw/2017/10/fang-chiao-kung.html" target="_blank" rel="noopener noreferrer" style="color: #f1c40f; text-decoration: underline; text-decoration-style: dotted;" class="hover:text-slate-400 underline decoration-dotted">
+            <a href="http://math.tainan.com.tw/2017/10/fang-chiao-kung.html" target="_blank" rel="noopener noreferrer" style="color: #f1c40f; text-decoration: underline; text-decoration-style: dotted;" class="hover:text-slate-300 underline decoration-dotted">
                 數學一點也不無聊
             </a>
         </p>
-        <p class="text-[10px] pt-2" style="font-size: 11px; color: #94a3b8; margin-top: 8px;">
+        <p class="text-[10px] pt-1" style="font-size: 11px; color: #64748b; margin-top: 6px;">
             本作品基於原版學習單改編，採用 
             <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh_TW" target="_blank" rel="noopener noreferrer" style="color: #f1c40f; text-decoration: underline; text-decoration-style: dotted;" class="underline decoration-dotted">
                 CC BY-NC-SA 4.0
